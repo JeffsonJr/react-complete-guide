@@ -7,24 +7,24 @@ import ExpensesList from './ExpensesList';
 import ExpensesChart from './ExpensesChart';
 
 const Expenses = (props) => {
-  const [year, setYear] = useState('2022');
+	const [year, setYear] = useState('2022');
 
-  const filterChangeHandler = selectedYear => {
-    setYear(selectedYear);
-  };
+	const filterChangeHandler = (selectedYear) => {
+		setYear(selectedYear);
+	};
 
-  const filteredExpenses = props.items.filter(expense => {
-    return expense.date.getFullYear().toString() === year;
-  });
+	const filteredExpenses = props.items.filter((expense) => {
+		return expense.date.getFullYear().toString() === year;
+	});
 
-  return (
+	return (
 		<li>
 			<Card className='expenses'>
 				<ExpenseFilter
 					selectedYear={year}
 					onFilterChange={filterChangeHandler}
 				/>
-        <ExpensesChart expenses={filteredExpenses} />
+				<ExpensesChart expenses={filteredExpenses} />
 				<ExpensesList items={filteredExpenses} />
 			</Card>
 		</li>
